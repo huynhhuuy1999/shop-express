@@ -1,0 +1,59 @@
+extends ../layout/layoutCustomer.pug
+block content
+    style
+        include ../../public/styles/product/styleProductMenu.css
+    .body.bg-light
+        .anhbia
+            img.img-responsive(src="/images/coffee.jpg", alt="")
+        .container
+            .sidenav.bg-white
+                ul
+                    li
+                        a#100 Sản phẩm khuyến mãi
+                    each t in typeProduct
+                        li
+                            a(href="#"+t._id)=t.name
+            .main
+                if listSale.length != 0
+                    h2.mb-4.name-category#100 Sản phẩm khuyến mãi
+                    .list-menu.flex-wrap.d-flex.mb-5
+                        each sale in listSale
+                            .item-menu.mb-4.bg-white
+                                .img
+                                    a(href="/product/detail/"+sale._id)
+                                        img(src="/images/"+sale.image, alt="")
+                                    .khuyenmai.p-2
+                                        -let a = "-"
+                                        -let b ="%"
+                                        span=a+sale.percentSale+b
+                                .info
+                                    p.name-Item=sale.name
+                                    p.price-Item
+                                        del=sale.price
+                                    .mb-2
+                                        a(href="")
+                                            button.buy-now Mua ngay
+                each ty in typeProduct
+                    h2.mb-4.name-category(id=""+ty._id)=ty.name
+                    .list-menu.flex-wrap.d-flex.mb-5
+                        each p in product
+                            if p.typeProduct == ty.name
+                                .item-menu.mb-4.bg-white
+                                    .img
+                                        a(href="/product/detail/"+p._id)
+                                            img(src="/images/"+p.image, alt="")
+                                        if p.sale.hasSale == 1
+                                            .khuyenmai.p-2
+                                                -let a = "-"
+                                                -let b ="%"
+                                                span=a+p.percentSale+b
+                                    .info
+                                        p.name-Item=p.name
+                                        if p.sale.hasSale == 1
+                                            p.price-Item
+                                                del=p.price
+                                        else
+                                            p.price-Item=p.price
+                                        .mb-2
+                                            a(href="")
+                                                button.buy-now Mua ngay

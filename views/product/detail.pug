@@ -1,0 +1,33 @@
+extends ../layout/layoutCustomer.pug
+block content
+    style
+        include ../../public/styles/product/styleProductDetail.css
+    .container.mb-5
+        each p in product
+            .list.pt-4.pb-4
+                a(href="") menu
+                span.pl-2.pr-2 /
+                span=p.name
+            .row
+                .col-md-6
+                    img.img-responsive(src="/images/"+p.image, alt="")
+                .col-md-6
+                    .detail
+                        p.name=p.name
+                        -let cost = " Đ"
+                        p.gia=p.price + cost
+                        p.mota.m-2=p.description
+                        a(href="")
+                            button Mua ngay
+                        p.mt-5 Giao hàng tận nơi
+                            span 1800 9061
+            .comment.mt-5.ml-5
+                span.title Bình luận
+                br
+                form(action="" method="POST")
+                    .cover-form
+                        .comment-input.mt-3
+                            input(type="text" name="SanPhamId" hidden value=p._id)
+                            input.bg-light(type="text" placeholder="Nhập bình luận" name="NoiDung")
+                        input(type="submit" name="Nhập" hidden)
+                .list-comment.mt-4

@@ -1,0 +1,34 @@
+extends ../layout/layoutCustomer.pug
+block content
+    style
+        include ../../public/styles/home/styleHome.css
+    .background
+        img.img-responsive.anhbia(src="/images/bia1.png", alt="")
+    .container
+        .title-menu
+            h2 Menu
+            a#x(href="")
+                button Xem thêm tất cả sản phẩm
+        .list-menu.flex-wrap.d-flex.w-100
+            each p in product
+                .item-menu.mb-4.bg-white
+                    .img
+                        a(href="/product/detail/"+p._id)
+                            img.img-responsive(src="/images/"+p.image, alt="")
+                    .info
+                        p.name-Item=p.name
+                        -let x = " Đ"
+                        p.price-Item=p.price +x
+                        .info-product.mb-2
+                            a(href="/order/addCart/"+p._id)
+                                button.buy-now Mua ngay
+                            a(href="/product/detail/"+p._id)
+                                button.more-inf.ml-3 Tìm hiểu thêm
+        .store
+            h2 Cửa hàng
+            .row
+                .col-md-6.signature
+                    h3 ABC house signature
+                    p Với những nghệ nhân rang tâm huyết và đội ngũ Barista tài năng cùng những câu chuyện cà phê đầy cảm hứng, ngôi nhà Signature 19B Phạm Ngọc Thạch, Q.3, TP.HCM là không gian dành riêng cho những ai trót yêu say đắm hương vị của những hạt cà phê tuyệt hảo.
+                .col-md-6
+                    img.img-responsive(src="/images/3e0a8783_master.jpg", alt="")

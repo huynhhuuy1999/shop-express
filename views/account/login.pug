@@ -1,0 +1,61 @@
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
+        link(rel="stylesheet",href="/styles/account/styleLogin.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        link(rel="stylesheet", href="/fontawesome/fontawesome-pro-5.12.0-web/css/all.min.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap")
+    body
+        .header.w-100.d-flex.bg-dark.text-white.p-4
+            span.ml-2 Milk Tea Store
+        .login.d-flex
+            form(action="/account/login" method="POST")
+                .form-group
+                    label(for="Username")
+                        i.fas.fa-user-alt &nbsp; User
+                    input.form-control#Username(type="text" placeholder="Tên tài khoản" name="Username" required autocomplete="off" value=value?value.Username:"")
+                .form-group
+                    label(for="Password")
+                        i.fas.fa-key &nbsp; Password
+                    input.form-control#Password(type="password" placeholder="Mật khẩu" name="Password" required autocomplete="off" value=value?value.Password:"")
+                if(error)
+                    .alert.alert-danger=error
+                .button.d-flex
+                    button.btn(type="submit") Đăng nhập
+                    a(href="/account/register")
+                        button.btn.ml-5(type="button") Tạo tài khoản
+        .footer
+            .container.pb-2
+                .row.w-100
+                    .col-md-3
+                        h2 Milk Tea Store
+                    .col-md-3
+                        h3 About
+                        .mt-2
+                            p Về chúng tôi
+                            p Hạt cà phêdiv
+                            p Blog
+                            p Cơ hội nghề nghiệp
+                            p Cửa hàng
+                    .col-md-3
+                        h3 ALWAYS-ON SUPPORT
+                        .mt-2
+                            p Delivery 1800 6936 (07:00-21:00)
+                            p Support 02871 087 088 (07:00-21:00)
+                        h3.mt-2 ADDRESS
+                        .mt-2
+                            p 62 Tran Quang Khai, Tan Dinh, Quan 1 Ho Chi Minh, Vietnam
+                            p 02871 087 088
+                            p hi@abcshop.vn
+                    .col-md-3
+                        h3 DELIVERY
+                        .mt-2
+                            p Shipping methods
+                            p Payment
+                            p Cash voucher
+                            p Return
+                            p Exchange
+                .mt-3(style="border-bottom:1px solid white;width:100%")
+                .row.pt-2
+                    .col-md-6 Copyright &copy 2020 The MilkTea House. All rights reserved.
+                    .col-md-6 Privacy Policy | Terms of Use
